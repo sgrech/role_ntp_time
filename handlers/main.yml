@@ -1,2 +1,5 @@
 ---
-# handlers file for role_ntp_time
+- name: Restart ntp
+  service:
+    name: ntp
+    state: restarted
