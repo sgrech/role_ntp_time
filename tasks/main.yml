@@ -1,0 +1,30 @@
+---
+- name: Install ntp
+  apt:
+    name: ntp
+
+- name: Enable and start ntp service
+  service:
+    name: ntp
+    state: started
+    enabled: yes
+
+- name: Set ntp pool to europe
+  lineinfile:
+    path: /etc/ntp.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: "^pool 0"
+      line: "{{ ntp_server_0 }}"
+    - regexp: "^pool 1"
+      line: "{{ ntp_server_1 }}"
+    - regexp: "^pool 2"
+      line: "{{ ntp_server_2 }}"
+    - regexp: "^pool 3"
+      line: "{{ ntp_server_3 }}"
+  notify: Restart ntp
+
+- name: Set Maltaese timezone
+  timezone:
+    name: "{{ ntp_time_zone }}"

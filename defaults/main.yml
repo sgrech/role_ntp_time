@@ -1,0 +1,7 @@
+---
+ntp_server_0: "server 0.europe.pool.ntp.org"
+ntp_server_1: "server 1.europe.pool.ntp.org"
+ntp_server_2: "server 2.europe.pool.ntp.org"
+ntp_server_3: "server 3.europe.pool.ntp.org"
+ntp_time_zone: "Europe/Malta"
+# defaults file for role_ntp_time
